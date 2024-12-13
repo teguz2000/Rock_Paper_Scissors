@@ -1,4 +1,5 @@
 console.log(getComputerChoice());
+console.log(getHumanChoice());
 
 function getComputerChoice ()
 {
@@ -8,13 +9,13 @@ function getComputerChoice ()
     switch(randomNumber % 3)
     {
         case 0:
-            computerChoice = "Rock";
+            computerChoice = "rock";
             break;
         case 1:
-            computerChoice = "Paper";
+            computerChoice = "paper";
             break;
         case 2:
-            computerChoice = "Scissors";
+            computerChoice = "scissors";
             break;
         default:
             computerChoice = "Ops, something is wrong";
@@ -22,4 +23,19 @@ function getComputerChoice ()
     }
 
     return computerChoice;
+}
+
+function getHumanChoice ()
+{
+    let humanChoice="default";
+
+    while(
+        humanChoice != "rock" &&
+        humanChoice != "paper" &&
+        humanChoice != "scissors")
+        {
+            humanChoice = prompt("Insert your choice", "").toLowerCase().trim();
+        }
+
+    return humanChoice;
 }
