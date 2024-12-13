@@ -1,5 +1,7 @@
-console.log(getComputerChoice());
-console.log(getHumanChoice());
+let humanScore = 0;
+let computerScore = 0;
+
+playRound(getHumanChoice(), getComputerChoice());
 
 function getComputerChoice ()
 {
@@ -38,4 +40,48 @@ function getHumanChoice ()
         }
 
     return humanChoice;
+}
+
+function playRound (humanChoice, computerChoice)
+{
+    const _humanChoice = humanChoice;
+    const _computerChoice = computerChoice;
+    let winner;
+
+    if(_humanChoice === _computerChoice)
+    {
+        console.log("You draw, both players have played "+_humanChoice + ".");
+        return;
+    }
+
+    switch(_humanChoice)
+    {
+        case "rock":
+            (_computerChoice === "scissors") ? winner = 0 : winner = 1;
+            break;
+        case "paper":
+            (_computerChoice === "rock") ? winner = 0 : winner = 1;
+            break;
+        case "scissors":
+            (_computerChoice === "paper") ? winner = 0 : winner = 1;
+            break;
+        default:
+            winner = 2;
+            break;
+    }
+
+    if(winner === 0)
+    {
+        console.log("You won, " + _humanChoice + " beats " + _computerChoice);
+        humanScore++;
+    }
+    else if(winner === 1)
+    {
+        console.log("You lost, " + _computerChoice + " beats " + _humanChoice);
+        computerScore++;
+    }
+    else
+    {
+        console.log("Wait, something went wrong!");
+    }
 }
